@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Mail, Rocket, CheckCircle2, AlertCircle } from 'lucide-react';
 import Section from './Section';
 import Button from './Button';
-import { supabase } from '../lib/supabase';
 
 export default function WaitlistCTA() {
   const [email, setEmail] = useState('');
@@ -24,35 +23,14 @@ export default function WaitlistCTA() {
       return;
     }
 
-    try {
-      const { error: insertError } = await supabase
-        .from('waitlist')
-        .insert([
-          {
-            email: email.trim().toLowerCase(),
-            name: name.trim(),
-            user_type: userType,
-            source: 'cta',
-          },
-        ]);
-
-      if (insertError) {
-        if (insertError.code === '23505') {
-          setError('This email is already on the waitlist!');
-        } else {
-          setError('Something went wrong. Please try again.');
-        }
-      } else {
-        setSuccess(true);
-        setEmail('');
-        setName('');
-        setUserType('student');
-      }
-    } catch (err) {
-      setError('Something went wrong. Please try again.');
-    } finally {
+    // Simulate network request
+    setTimeout(() => {
+      setSuccess(true);
       setLoading(false);
-    }
+      setEmail('');
+      setName('');
+      setUserType('student');
+    }, 1000);
   };
 
   return (
