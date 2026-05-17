@@ -1,4 +1,4 @@
-# ML/DL Project Enhancements - Interview Guide
+# ML/DL Project Enhancements 
 
 This document explains the Machine Learning and Deep Learning components integrated into the project. These functionalities are designed to demonstrate high-level architectural thinking and implementation skills during interviews.
 
